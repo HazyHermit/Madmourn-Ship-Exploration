@@ -9,8 +9,8 @@ Code requirements:
 
 Experience requirements:
 - **4+ locations in the game world**: Main Deck, Below Deck, Steering Wheel, Side of Ship (name at least 4 of the classes).
-- **2+ interactive objects in most scenes**: The bucket and silver key.  
-- **Many objects have `pointerover` messages**: The bucket and silver key. (describe two examples)
+- **2+ interactive objects in most scenes**: The bucket, silver key, and fishing rod can be picked up.  
+- **Many objects have `pointerover` messages**: The bucket and silver key has messages about their use. (describe two examples)
 - **Many objects have `pointerdown` effects**: The change in locations and the items that the player can pick up. (describe two examples)
 - **Some objects are themselves animated**: Visual assets move to replace the text once clicked. (describe two examples)
 
