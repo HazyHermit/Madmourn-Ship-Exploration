@@ -3,14 +3,34 @@ class MainDeck extends AdventureScene {
         super("MainDeck", "First Room");
     }
 
+    preload ()
+    {
+        this.load.path = './assets/';
+        this.load.image('bucket', 'IMG_0135.jpeg')
+        this.load.image('silver key', 'IMG_0135 (2).jpeg');
+        this.load.image('fishing rod', 'IMG_0135 (1).jpeg');
+    }
     onEnter() {
 
-        let clip = this.add.text(this.w * 0.3, this.w * 0.3, "bucket")
+        let clip = this.add.text(this.w * 0.3, this.w * 0.3, " 🪣bucket")
             .setFontSize(this.s * 2)
             .setInteractive()
             .on('pointerover', () => this.showMessage("The wire end of the bucket looks like it's going to pop off."))
             .on('pointerdown', () => {
                 this.showMessage("You pried apart the wire handle from the bucket.");
+
+                this.imageObject = this.add.sprite(this.w * 0.3, this.w * 0.3, 'bucket')
+                this.imageObject.scale = 0.25;
+                this.tweens.add({
+                    targets: this.imageObject,
+                    x: 700,
+                    duration: 2000,
+                    repeat: 0,
+                    hold: 500,
+                    repeatDelay: 500,
+                    ease: 'cubic.in'
+                });
+
                 this.gainItem('wire');
                 this.tweens.add({
                     targets: clip,
@@ -20,18 +40,6 @@ class MainDeck extends AdventureScene {
                     onComplete: () => clip.destroy()
                 });
             })
-
-            // .on('pointerdown', () => {
-            //     this.showMessage("No touching!");
-            //     this.tweens.add({
-            //         targets: clip,
-            //         x: '+=' + this.s,
-            //         repeat: 2,
-            //         yoyo: true,
-            //         ease: 'Sine.inOut',
-            //         duration: 100
-            //     });
-            // });
 
         let below = this.add.text(this.w * 0.5, this.w * 0.1, "BELOW DECK ")
             .setFontSize(this.s * 2)
@@ -97,12 +105,23 @@ class SideofShip extends AdventureScene {
                 this.gotoScene('MainDeck');
             });
 
-        let clip = this.add.text(this.w * 0.3, this.w * 0.3, "fishing rod")
+        let clip = this.add.text(this.w * 0.3, this.w * 0.3, " 🎣fishing rod")
             .setFontSize(this.s * 2)
             .setInteractive()
             .on('pointerover', () => this.showMessage("The hook can be useful!"))
             .on('pointerdown', () => {
                 this.showMessage("You cut the hook from the rod.");
+                this.imageObject = this.add.sprite(this.w * 0.3, this.w * 0.3, 'fishing rod')
+                this.imageObject.scale = 0.25;
+                this.tweens.add({
+                    targets: this.imageObject,
+                    x: 700,
+                    duration: 2000,
+                    repeat: 0,
+                    hold: 500,
+                    repeatDelay: 500,
+                    ease: 'cubic.in'
+                });
                 this.gainItem('fishing hook');
                 this.tweens.add({
                     targets: key,
@@ -144,12 +163,24 @@ class BelowDeck extends AdventureScene {
                 this.gotoScene('MainDeck');
             });
 
-        let clip = this.add.text(this.w * 0.3, this.w * 0.3, "silver key")
+        let key = this.add.text(this.w * 0.3, this.w * 0.3, "silver key")
             .setFontSize(this.s * 2)
             .setInteractive()
             .on('pointerover', () => this.showMessage("It looks like it can open something."))
             .on('pointerdown', () => {
                 this.showMessage("What a good find.");
+                this.imageObject = this.add.sprite(this.w * 0.3, this.w * 0.3, 'silver key')
+                this.imageObject.scale = 0.25;
+                this.tweens.add({
+                    targets: this.imageObject,
+                    x: 700,
+                    duration: 2000,
+                    repeat: 0,
+                    hold: 500,
+                    repeatDelay: 500,
+                    ease: 'cubic.in'
+                });
+
                 this.gainItem('silver key ');
                 this.tweens.add({
                     targets: key,
@@ -160,8 +191,8 @@ class BelowDeck extends AdventureScene {
                 });
             })
 
-        let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
-            .setInteractive()
+        // let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
+        //     .setInteractive()
             // .on('pointerover', () => {
             //     this.showMessage('*giggles*');
             //     this.tweens.add({
@@ -172,7 +203,7 @@ class BelowDeck extends AdventureScene {
             //         duration: 500
             //     });
             // })
-            .on('pointerdown', () => this.gotoScene('outro'));
+            // .on('pointerdown', () => this.gotoScene('outro'));
     }
 }
 
@@ -181,7 +212,7 @@ class SteeringWheel extends AdventureScene {
         super("SteeringWheel", "A robot captain is in need of repair.");
     }
     onEnter() {
-        this.add.text(this.w * 0.3, this.w * 0.4, "Main Deck")
+        this.add.text(this.w * 0.5, this.w * 0.5, "Main Deck")
             .setFontSize(this.s * 2)
             .setInteractive()
             .on('pointerover', () => {
@@ -251,7 +282,7 @@ class Intro extends Phaser.Scene {
         super('intro')
     }
     create() {
-        this.add.text(50,50, "Adventure awaits!").setFontSize(50);
+        this.add.text(50,50, "Madmourn Ship Exploration").setFontSize(50);
         this.add.text(50,100, "Click anywhere to begin.").setFontSize(20);
         this.input.on('pointerdown', () => {
             this.cameras.main.fade(1000, 0,0,0);
