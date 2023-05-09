@@ -2,7 +2,7 @@ A simple adventure game by Hazelle Malonzo based on a simple adventure game engi
 
 Code requirements:
 - **4+ scenes based on `AdventureScene`**: Main Deck, Below Deck, Steering Wheel, Side of Ship (name at least 4 of the classes).
-- **2+ scenes *not* based on `AdventureScene`**: unsatisfied (name the classes).
+- **2+ scenes *not* based on `AdventureScene`**: IntroPt1 (the loading scene) and IntroPt2 (the objective screen).
 - **2+ methods or other enhancement added to the adventure game engine to simplify my scenes**:
     - Enhancement 1: unsatisfied (name the method and explain the use of it).
     - Enhancement 2: unsatisfied (name the method and explain the use of it).
@@ -16,6 +16,9 @@ Experience requirements:
 
 Asset sources:
 - (For each image/audio/video asset used, describe how it was created. What tool did you use to create it? Was it based on another work? If so, how did you change it, and where can we learn more about the original work for comparison? Use [Markdown link syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links).)
+
+    ALL ART ASSETS ARE DRAWN BY HAZELLE MALONZO USING PROCREATE.
+
 
 Code sources:
 - `adventure.js` and `index.html` were created for this project [Adam Smith](https://github.com/rndmcnlly) and edited by me.

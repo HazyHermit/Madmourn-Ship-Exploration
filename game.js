@@ -1,6 +1,6 @@
 class MainDeck extends AdventureScene {
     constructor() {
-        super("MainDeck", "First Room");
+        super("MainDeck", "Main Deck");
     }
 
     preload ()
@@ -191,19 +191,6 @@ class BelowDeck extends AdventureScene {
                 });
             })
 
-        // let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
-        //     .setInteractive()
-            // .on('pointerover', () => {
-            //     this.showMessage('*giggles*');
-            //     this.tweens.add({
-            //         targets: finish,
-            //         x: this.s + (this.h - 2 * this.s) * Math.random(),
-            //         y: this.s + (this.h - 2 * this.s) * Math.random(),
-            //         ease: 'Sine.inOut',
-            //         duration: 500
-            //     });
-            // })
-            // .on('pointerdown', () => this.gotoScene('outro'));
     }
 }
 
@@ -257,19 +244,6 @@ class SteeringWheel extends AdventureScene {
                 }
             })
             .on('pointerdown', () => this.gotoScene('outro'));
-        // let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
-        //     .setInteractive()
-            // .on('pointerover', () => {
-            //     this.showMessage('*giggles*');
-            //     this.tweens.add({
-            //         targets: finish,
-            //         x: this.s + (this.h - 2 * this.s) * Math.random(),
-            //         y: this.s + (this.h - 2 * this.s) * Math.random(),
-            //         ease: 'Sine.inOut',
-            //         duration: 500
-            //     });
-            // })
-            // .on('pointerdown', () => this.gotoScene('outro'));
     }
 }
 
@@ -286,9 +260,101 @@ class Intro extends Phaser.Scene {
         this.add.text(50,100, "Click anywhere to begin.").setFontSize(20);
         this.input.on('pointerdown', () => {
             this.cameras.main.fade(1000, 0,0,0);
-            this.time.delayedCall(1000, () => this.scene.start('MainDeck'));
+            this.time.delayedCall(1000, () => this.scene.start('IntroPt1'));
         });
     }
+}
+
+class IntroPt1 extends Phaser.Scene
+{
+    constructor ()
+    {
+        super({ key: 'IntroPt1' });
+    }
+
+    // preload ()
+    // {
+    //     this.load.image('arrow', 'assets/sprites/longarrow.png');
+    // }
+
+    create ()
+    {
+        this.textObject = this.add.text(
+            300, //x
+            100,//y
+            "Loading...,",//text
+            {
+                font: "40px Times New Roman",
+                color: "#ffffff",
+            }
+        );
+        this.textObject = this.add.text(
+            200, //x
+            200,//y
+            "(not really, click to continue.)",//text
+            {
+                font: "12px Times New Roman",
+                color: "#ffffff",
+            }
+        );
+
+
+        this.input.once('pointerdown', function (event)
+        {
+
+            console.log('From IntroPt1 to IntroPt2');
+
+            this.scene.start('IntroPt2');
+
+        }, this);
+    }
+
+}
+
+class IntroPt2 extends Phaser.Scene
+{
+    constructor ()
+    {
+        super({ key: 'IntroPt2' });
+    }
+
+    // preload ()
+    // {
+    //     this.load.image('arrow', 'assets/sprites/longarrow.png');
+    // }
+
+    create ()
+    {
+        this.textObject = this.add.text(
+            300, //x
+            100,//y
+            "The robot captain on the Madmourn ship is in need of repair.,",//text
+            {
+                font: "40px Times New Roman",
+                color: "#ffffff",
+            }
+        );
+        this.textObject = this.add.text(
+            200, //x
+            200,//y
+            "OBJECTIVE: Fix the robot captain.",//text
+            {
+                font: "30px Times New Roman",
+                color: "#ffffff",
+            }
+        );
+
+
+        this.input.once('pointerdown', function (event)
+        {
+
+            console.log('From IntroPt2 to MainDeck');
+
+            this.scene.start('MainDeck');
+
+        }, this);
+    }
+
 }
 
 class Outro extends Phaser.Scene {
@@ -310,7 +376,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Intro, MainDeck, SideofShip, BelowDeck,SteeringWheel, Outro],
+    scene: [Intro,IntroPt1,IntroPt2, MainDeck, SideofShip, BelowDeck,SteeringWheel, Outro],
     title: "Adventure Game",
 });
 
